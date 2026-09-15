@@ -17,7 +17,7 @@ export const connectDB = async () => {
     return mongoose.connection;
   }
 
-  const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/lms_db';
+  const uri = process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/lms_db';
 
   try {
     const conn = await mongoose.connect(uri, {
