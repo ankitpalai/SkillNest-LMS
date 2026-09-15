@@ -10,7 +10,7 @@ import { sendWelcomeEmail, sendPasswordResetEmail } from '../services/emailServi
  */
 export const registerUser = async (req, res, next) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, role } = req.body;
 
     // Validate presence of required fields
     if (!name || !email || !password) {
@@ -36,12 +36,15 @@ export const registerUser = async (req, res, next) => {
       });
     }
 
-    // Create user with default 'student' role
+    // Allow student or instructor registration (admin role requires existing admin privileges)
+    const userRole = role === 'instructor' ? 'instructor' : 'student';
+
+    // Create user
     const user = await User.create({
       name: name.trim(),
       email: email.toLowerCase().trim(),
       password,
-      role: 'student',
+      role: userRole,
     });
 
     const token = generateToken(user._id, user.role);
