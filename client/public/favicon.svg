@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="sn-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background Shield / Rounded Badge -->
+  <rect width="64" height="64" rx="16" fill="url(#sn-grad)"/>
+
+  <!-- Subtle Inner Border Highlight -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="#93c5fd" stroke-width="1.5" stroke-opacity="0.3"/>
+
+  <!-- Academic / Learning Cap Motif Top -->
+  <polygon points="32,14 50,23 32,32 14,23" fill="#ffffff"/>
+  <polygon points="32,16 46,23 32,30 18,23" fill="url(#accent-grad)"/>
+  
+  <!-- Tassel -->
+  <path d="M47,24.5 L47,33 L45,34 L49,34 Z" fill="#facc15"/>
+
+  <!-- Nest / Open Book Curved Arc Foundation -->
+  <path d="M18,36 C24,40 29,38 32,42 C35,38 40,40 46,36 C44,44 38,48 32,48 C26,48 20,44 18,36 Z" fill="#ffffff" opacity="0.95"/>
+  
+  <!-- Brand Core "S" Spark / Seed -->
+  <circle cx="32" cy="37" r="3" fill="#38bdf8"/>
+</svg>
