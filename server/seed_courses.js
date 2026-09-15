@@ -19,7 +19,20 @@ const seedCoursesAndCategories = async () => {
     await mongoose.connect(uri, { family: 4, serverSelectionTimeoutMS: 8000 });
     console.log('[Seed] Connected successfully.');
 
-    // 1. Ensure instructor account exists
+    // 1. Ensure Admin and Instructor accounts exist
+    let admin = await User.findOne({ email: 'admin@example.com' });
+    if (!admin) {
+      console.log('[Seed] Creating admin account...');
+      admin = await User.create({
+        name: 'System Administrator',
+        email: 'admin@example.com',
+        password: 'admin123',
+        role: 'admin',
+        avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&auto=format&fit=crop&q=80',
+        bio: 'SkillNest Lead System Administrator & Platform Architect.',
+      });
+    }
+
     let instructor = await User.findOne({ email: 'instructor@example.com' });
     if (!instructor) {
       console.log('[Seed] Creating instructor account...');
@@ -30,6 +43,17 @@ const seedCoursesAndCategories = async () => {
         role: 'instructor',
         avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80',
         bio: 'Distinguished Software Architect and Senior Computer Science Fellow with 14+ years designing scalable cloud-native architectures.',
+      });
+    }
+
+    let student = await User.findOne({ email: 'student@example.com' });
+    if (!student) {
+      console.log('[Seed] Creating student account...');
+      student = await User.create({
+        name: 'Sarah Connor',
+        email: 'student@example.com',
+        password: 'password123',
+        role: 'student',
       });
     }
 
